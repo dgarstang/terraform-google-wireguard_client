@@ -1,5 +1,5 @@
 locals {
-  private_key = trim(file("${abspath("${path.module}/private.key")}), "\n")
+  private_key = trim(file("${path.module}/private.key"))
 }
 
 resource "null_resource" "write_wireguard_config" {
