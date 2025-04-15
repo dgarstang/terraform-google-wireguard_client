@@ -35,4 +35,4 @@ override.tf.json
 
 **/.terraform.lock.hcl
 
-private_key
+private.key
