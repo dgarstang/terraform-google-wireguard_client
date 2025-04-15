@@ -1,5 +1,5 @@
-locals {
-  private_key = file("${path.module}/private.key")
+data "local_file" "private_key" {
+  filename = "private.key"
 }
 
 resource "null_resource" "write_wireguard_config" {
@@ -11,7 +11,7 @@ resource "null_resource" "write_wireguard_config" {
     command = <<EOT
 cat <<EOF | sudo tee /opt/homebrew/etc/wireguard/wg0.conf > /dev/null
 [Interface]
-PrivateKey = ${local.private_key}
+PrivateKey = ${data.local_file.private_key.content}
 Address = ${var.interface_address}
 DNS = ${var.dns_server_address}
 
