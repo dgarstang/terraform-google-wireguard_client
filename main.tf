@@ -1,5 +1,5 @@
 data "local_file" "private_key" {
-  filename = "private.key"
+  filename = "./private.key"
 }
 
 resource "null_resource" "write_wireguard_config" {
